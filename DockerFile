@@ -1,0 +1,19 @@
+# 이미지를 구성할 기본 환경 이미지
+FROM node:16-alpine
+
+# 컨테이너에 폴더 생성
+WORKDIR /app
+
+
+# 현재 소스코드에서 특정 파일을 컨테이너 디렉토리에 복사
+COPY . ./
+
+# 명령어 실행
+RUN npm ci
+
+RUN npm run build
+
+ENTRYPOINT [ "node", "dist/main.js" ]
+
+
+
