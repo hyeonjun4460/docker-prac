@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: DockerFile
+    env_file:
+      - .env
+    ports:
+      - '3000:${PORT}'
+    command: node dist/main.js
